@@ -3,4 +3,4 @@ A compilation of useful algorithms and data structures implementation
 
 Useful links
 
-[https://cp-algorithms.com/]
+https://cp-algorithms.com/
