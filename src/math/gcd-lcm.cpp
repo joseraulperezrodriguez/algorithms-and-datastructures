@@ -19,6 +19,15 @@ int64 extendedGCD( int64 a, int64 b, int64& x, int64& y ) {
   return g;
 }
 
+int gcd(int a, int b) {
+    return b == 0 ? a : gcd(b, a % b);
+}
+
+int lcm(int a, int b) {
+    int temp = gcd(a, b);
+    return temp ? (a / temp * b) : 0;
+}
+
 int main() {
 
   scanf( "%lld %lld", &n, &m );
