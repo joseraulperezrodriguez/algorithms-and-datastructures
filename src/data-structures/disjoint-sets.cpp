@@ -25,7 +25,7 @@ using namespace std;
 
 #define MAX_N 200001
 
-int id[MAX_N], sz[MAX_N], next[MAX_N];
+int id[MAX_N], sz[MAX_N], nextt[MAX_N];
 
 int count_sets = 0;
 
@@ -71,10 +71,10 @@ int main() {
 	for(int I = 0; I < n; I++) {
 		id[I + 1] = I + 1;
 		sz[I + 1] = 1;
-		next[I + 1] = I + 2;
+		nextt[I + 1] = I + 2;
 	}
 
-	next[n] = 0;
+	nextt[n] = 0;
 
 	string result;
 
@@ -87,11 +87,11 @@ int main() {
 			if(x == y)continue;
 
 			int index = x;
-			while(next[index] <= y) {
-				merge(index, next[index]);
+			while(nextt[index] <= y) {
+				merge(index, nextt[index]);
 				int temp = index;
-				index = next[index];
-				next[temp] = y + 1;
+				index = nextt[index];
+				nextt[temp] = y + 1;
 
 			}
 		} else result += (find(x) == find(y) ? "YES\n" : "NO\n");

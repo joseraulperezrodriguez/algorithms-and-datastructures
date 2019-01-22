@@ -18,7 +18,7 @@
 int N, w, m;
 int who;
 
-int wife[MAXN], next[MAXN];
+int wife[MAXN], nextt[MAXN];
 int pref[MAXN][MAXN],
     rank[MAXN][MAXN];
 
@@ -48,7 +48,7 @@ int main() {
   for ( int i = 1; i <= N; i++ ) {
     w = i;
     for ( ;; ) {
-      m = pref[w][ ++next[w] ];
+      m = pref[w][ ++nextt[w] ];
       if ( !wife[m] ) {
         wife[m] = w;
         break;

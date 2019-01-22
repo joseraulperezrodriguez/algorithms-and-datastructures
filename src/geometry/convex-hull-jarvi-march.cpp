@@ -22,7 +22,7 @@ using namespace std;
 typedef complex< int > point;
 
 int N, H, cp;
-int start, curr, next;
+int start, curr, nextt;
 
 int hull[MAXN];
 point p[MAXN];
@@ -50,14 +50,14 @@ int main() {
   curr = H = 0;
   do {
     hull[ H++ ] = curr;
-    next = -1;
+    nextt = -1;
     for ( int i = 0; i < N; i++ ) {
       if ( i == curr ) continue;
-      if ( next == -1 ) next = i;
-      cp = cross( p[i] - p[curr], p[next] - p[curr] );
-      if ( cp < 0 ) next = i;
+      if ( nextt == -1 ) nextt = i;
+      cp = cross( p[i] - p[curr], p[nextt] - p[curr] );
+      if ( cp < 0 ) nextt = i;
     }
-    curr = next;
+    curr = nextt;
   } while ( curr != 0 );
   
   for ( int i = 0; i < H; i++ )

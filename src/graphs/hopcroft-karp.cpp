@@ -25,7 +25,7 @@ int ans;
 
 int Q[MAXV];
 
-int next[MAXE];
+int nextt[MAXE];
 int start[MAXV];
 
 int mx[MAXV],
@@ -53,7 +53,7 @@ bool bfs()
 		u = Q[ head++ ];
 		for ( int i = start[u]; i <= start[ u + 1 ] - 1; i++ )
         {
-			v = next[i];
+			v = nextt[i];
 			if ( dy[v] == 0 )
             {
 				dy[v] = dx[u] + 1;
@@ -75,7 +75,7 @@ bool dfs( int u )
 {
 	for ( int i = start[u]; i <= start[ u + 1 ] - 1; i++ )
     {
-		int v = next[i];
+		int v = nextt[i];
 		if ( dy[v] == dx[u] + 1 )
         {
 			dy[v] = 0;
@@ -110,7 +110,7 @@ int main()
 	for ( int i = 1; i <= E; i++ )
     {
 		start[ edges[i].u ]--;
-		next[ start[ edges[i].u ] ] = edges[i].v;
+		nextt[ start[ edges[i].u ] ] = edges[i].v;
 	}
 	
 	memset( mx, 0xff, sizeof( int ) * ( V + 1 ) );
