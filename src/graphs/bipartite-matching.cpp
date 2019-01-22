@@ -16,7 +16,7 @@ struct edge {
   int v, next;
 } edges[ 2 * MAXE ];
 
-int S, V, E;
+int S, V, edge_count;
 int u, v;
 int cardinality;
 
@@ -49,16 +49,16 @@ int main() {
   memset( p, -1, sizeof( p ) );
   memset( match_to, -1, sizeof( match_to ) );
   
-  scanf( "%d %d %d", &S, &V, &E );
-  for ( int i = 0; i < E; i++ ) {
+  scanf( "%d %d %d", &S, &V, &edge_count );
+  for ( int i = 0; i < edge_count; i++ ) {
     
 	scanf( "%d %d", &u, &v );
 	u--; v--;
 	
 	edges[i] = ( edge ) { v, p[u] };
 	p[u] = i;
-	edges[ i + E ] = ( edge ) { u, p[v] };
-	p[v] = i + E;
+	edges[ i + edge_count ] = ( edge ) { u, p[v] };
+	p[v] = i + edge_count;
   }
   
   /* Ford-Fulkerson method */

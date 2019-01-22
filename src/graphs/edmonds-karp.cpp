@@ -28,7 +28,7 @@ struct edge {
   bool original;
 } edges[ 2 * MAXE ];
 
-int V, E, src, snk;
+int V, edge_count, src, snk;
 int u, v, c;
 int counter, flow, res_cap;
 
@@ -90,8 +90,8 @@ int main() {
   memset( p, -1, sizeof( p ) );
   counter = 0;
   
-  scanf( "%d %d %d %d", &V, &E, &src, &snk );
-  for ( int i = 0; i < E; i++ ) {
+  scanf( "%d %d %d %d", &V, &edge_count, &src, &snk );
+  for ( int i = 0; i < edge_count; i++ ) {
     scanf( "%d %d %d", &u, &v, &c );
     create_edge( u, v, c );
   }

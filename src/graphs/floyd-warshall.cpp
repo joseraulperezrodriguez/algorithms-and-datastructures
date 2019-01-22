@@ -11,7 +11,7 @@
 #define MAXV 200
 #define oo 1000000000
 
-int V, E;
+int V, edge_count;
 int u, v, w;
 
 int c[MAXV][MAXV],
@@ -24,8 +24,8 @@ int main() {
   
   memset( c, 63, sizeof( c ) );
   
-  scanf( "%d %d", &V, &E );
-  for ( int i = 0; i < E; i++ ) {
+  scanf( "%d %d", &V, &edge_count );
+  for ( int i = 0; i < edge_count; i++ ) {
     scanf( "%d %d %d", &u, &v, &w );
     c[ u - 1 ][ v - 1 ] = w;
     p[ u - 1 ][ v - 1 ] = -1;

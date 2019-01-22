@@ -22,7 +22,7 @@ struct edge {
   int v, next;
 } edges[ MAXN - 1 ];
 
-int N, E, queries;
+int N, edge_count, queries;
 int u, v, d;
 
 int p[MAXN], lg[MAXN];
@@ -48,10 +48,10 @@ int main() {
     scanf( "%d %d", &u, &v );
     u--; v--;
     
-    edges[E] = ( edge ) { v, p[u] };
-    p[u] = E++;
-    edges[E] = ( edge ) { u, p[v] };
-    p[v] = E++;
+    edges[edge_count] = ( edge ) { v, p[u] };
+    p[u] = edge_count++;
+    edges[edge_count] = ( edge ) { u, p[v] };
+    p[v] = edge_count++;
   }
   
   /* Assign depths and compute table LA[][] */

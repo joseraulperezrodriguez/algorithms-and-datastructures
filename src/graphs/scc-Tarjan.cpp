@@ -19,7 +19,7 @@ struct node {
   int v, next;
 } L[MAXE];
 
-int V, E, SCC, cnt;
+int V, edge_count, SCC, cnt;
 int x, y;
 
 int ptr[MAXV];
@@ -66,8 +66,8 @@ int main() {
   
   memset( ptr, -1, sizeof( ptr ) );
   
-  scanf( "%d %d", &V, &E );
-  for ( int i = 0; i < E; i++ ) {
+  scanf( "%d %d", &V, &edge_count );
+  for ( int i = 0; i < edge_count; i++ ) {
     scanf( "%d %d", &x, &y );
     L[i] = ( node ) { y, ptr[x] };
     ptr[x] = i;
@@ -76,8 +76,8 @@ int main() {
   // Create a 'dummy' vertex with edges to all other vertices
   
   for ( int i = 1; i <= V; i++ ) {
-    L[ E + i - 1 ] = ( node ) { i, ptr[0] };
-    ptr[0] = E + i - 1;
+    L[ edge_count + i - 1 ] = ( node ) { i, ptr[0] };
+    ptr[0] = edge_count + i - 1;
   }
   
   // Find SCCs

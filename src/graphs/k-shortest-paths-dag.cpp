@@ -19,7 +19,7 @@ struct edge {
   int v, w, next;
 } edges[MAXE];
 
-int V, E, s, t, k;
+int V, edge_count, s, t, k;
 int u, v, w, cost;
 
 int p[MAXV];
@@ -32,8 +32,8 @@ int main() {
 
   memset( p, -1, sizeof( p ) );
 
-  scanf( "%d %d %d %d %d", &V, &E, &s, &t, &k );
-  for ( int i = 0; i < E; i++ ) {
+  scanf( "%d %d %d %d %d", &V, &edge_count, &s, &t, &k );
+  for ( int i = 0; i < edge_count; i++ ) {
     
 	scanf( "%d %d %d", &u, &v, &w );
 	u--; v--;

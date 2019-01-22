@@ -18,7 +18,7 @@ using namespace std;
 #define MOD 1000003
 #define BASE 26
 
-int N, E, cnt;
+int N, edge_count, cnt;
 int hp, ht;
 char c;
 
@@ -44,8 +44,8 @@ int main() {
   
   // Calculate E = BASE^(N-1) mod MOD
   
-  E = 1;
-  for ( int i = 0; i < N - 1; i++ ) E = BASE * E % MOD;
+  edge_count = 1;
+  for ( int i = 0; i < N - 1; i++ ) edge_count = BASE * edge_count % MOD;
   
   // Hashing the pattern
   
@@ -70,7 +70,7 @@ int main() {
   while ( ( c = getchar() ) != EOF ) {
     
     cnt++;
-    ht = intMod( ht - intMod( q.front() * E, MOD ), MOD );
+    ht = intMod( ht - intMod( q.front() * edge_count, MOD ), MOD );
     ht = intMod( BASE * ht + c, MOD );
     
     q.pop_front();

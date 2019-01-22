@@ -22,7 +22,7 @@ struct node
 	node( int u, bool L ) : u(u), L(L) { }
 };
 
-int X, Y, E;
+int X, Y, edge_count;
 int u, v;
 int sentinel;
 int cardinality;
@@ -59,9 +59,9 @@ int main()
 	freopen( "in.txt", "r", stdin );
 	freopen( "out.txt", "w", stdout );
 
-	scanf( "%d %d %d", &X, &Y, &E );
+	scanf( "%d %d %d", &X, &Y, &edge_count );
 	vector< vector< int > > ady( X + Y );
-	for ( int i = 0; i < E; i++ )
+	for ( int i = 0; i < edge_count; i++ )
 	{
 		scanf( "%d %d", &u, &v );
 		u--; v--;

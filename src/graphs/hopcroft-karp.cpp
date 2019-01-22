@@ -18,7 +18,7 @@ struct edge
 	int u, v;
 } edges[MAXE];
 
-int V, vv, E;
+int V, vv, edge_count;
 int head, tail;
 int u, v;
 int ans;
@@ -93,10 +93,10 @@ bool dfs( int u )
 
 int main()
 {
-	scanf( "%d %d %d", &V, &v, &E );
+	scanf( "%d %d %d", &V, &v, &edge_count );
 	V = max( V, v );
 	
-	for ( int i = 1; i <= E; i++ )
+	for ( int i = 1; i <= edge_count; i++ )
     {
 		scanf( "%d %d", &edges[i].u, &edges[i].v );
 		start[ edges[i].u ]++;
@@ -107,7 +107,7 @@ int main()
 		start[i] += start[ i - 1 ];
 	start[ V + 1 ] = start[V];
 	
-	for ( int i = 1; i <= E; i++ )
+	for ( int i = 1; i <= edge_count; i++ )
     {
 		start[ edges[i].u ]--;
 		nextt[ start[ edges[i].u ] ] = edges[i].v;

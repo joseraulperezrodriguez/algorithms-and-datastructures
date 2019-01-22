@@ -19,7 +19,7 @@ int u, v;
 int p[MAXN], q[MAXN];
 int ancestor[MAXN];
 bool mark[MAXN], visited[MAXN];
-pair edge[ 2 * ( MAXN - 1 ) ],
+pair graph[ 2 * ( MAXN - 1 ) ],
      query[ 2 * MAXQ ];
 
 /* disjoint-sets structure */
@@ -42,8 +42,8 @@ void dfs( int u ) {
   visited[u] = true;
   ancestor[ find( u ) ] = u;
 
-  for ( int i = p[u]; i != -1; i = edge[i].next ) {
-    int v = edge[i].v;
+  for ( int i = p[u]; i != -1; i = graph[i].next ) {
+    int v = graph[i].v;
     if ( visited[v] ) continue;
     dfs( v );
     join( u, v );
@@ -73,9 +73,9 @@ int main() {
     scanf( "%d %d", &u, &v );
     u--; v--;
     
-    edge[i] = ( pair ) { v, p[u] };
+    graph[i] = ( pair ) { v, p[u] };
     p[u] = i;
-    edge[ i + N - 1 ] = ( pair ) { u, p[v] };
+    graph[ i + N - 1 ] = ( pair ) { u, p[v] };
     p[v] = i + N - 1;
   }
   

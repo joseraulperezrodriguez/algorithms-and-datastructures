@@ -21,7 +21,7 @@ struct edge {
   int u, v, next;
 } edges[ 2 * MAXE ];
 
-int V, E, s, t;
+int V, edge_count, s, t;
 int u, v, cap;
 
 int p[MAXV];
@@ -56,8 +56,8 @@ int main() {
   
   memset( p, -1, sizeof( p ) );
   
-  scanf( "%d %d %d %d", &V, &E, &s, &t );
-  for ( int i = 0; i < E; i++ ) {
+  scanf( "%d %d %d %d", &V, &edge_count, &s, &t );
+  for ( int i = 0; i < edge_count; i++ ) {
   
     scanf( "%d %d %d", &u, &v, &cap );
     u--; v--;
@@ -65,8 +65,8 @@ int main() {
     c[u][v] = cap;
     edges[i] = ( edge ) { u, v, p[u] };
     p[u] = i;
-    edges[ i + E ] = ( edge ) { v, u, p[v] };
-    p[v] = i + E;
+    edges[ i + edge_count ] = ( edge ) { v, u, p[v] };
+    p[v] = i + edge_count;
   }
   
   /* Initialize preflow */
@@ -113,7 +113,7 @@ int main() {
   }
   
   printf( "Maximum network flow: %d\n", e[t] );
-  for ( int i = 0; i < E; i++ ) {
+  for ( int i = 0; i < edge_count; i++ ) {
     u = edges[i].u;
     v = edges[i].v;
     if ( f[u][v] > 0 )

@@ -16,7 +16,7 @@ struct node {
   int v, next;
 } L[MAXE];
 
-int V, E, cnt, top, subtrees;
+int V, edge_count, cnt, top, subtrees;
 int x, y;
 
 int ptr[MAXV];
@@ -49,16 +49,16 @@ int main() {
   
   memset( ptr, -1, sizeof( ptr ) );
   
-  scanf( "%d %d", &V, &E );
-  for ( int i = 0; i < E; i++ ) {
+  scanf( "%d %d", &V, &edge_count );
+  for ( int i = 0; i < edge_count; i++ ) {
   
     scanf( "%d %d", &x, &y );
     x--; y--;
     
     L[i] = ( node ) { y, ptr[x] };
     ptr[x] = i;
-    L[ i + E ] = ( node ) { x, ptr[y] };
-    ptr[y] = i + E;
+    L[ i + edge_count ] = ( node ) { x, ptr[y] };
+    ptr[y] = i + edge_count;
   }
   
   // Find Articulation Points

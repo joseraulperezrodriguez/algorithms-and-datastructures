@@ -6,9 +6,9 @@
 
 struct Edge {
   int u, v, w;
-} edge[MAXE];
+} graph[MAXE];
 
-int V, E, source;
+int V, edge_count, source;
 int u, v, w;
 bool neg_cycle;
 
@@ -25,10 +25,10 @@ int main() {
   freopen( "in.txt", "r", stdin );
   freopen( "out.txt", "w", stdout );
   
-  scanf( "%d %d %d", &V, &E, &source );
-  for ( int i = 0; i < E; i++ ) {
+  scanf( "%d %d %d", &V, &edge_count, &source );
+  for ( int i = 0; i < edge_count; i++ ) {
     scanf( "%d %d %d", &u, &v, &w );
-    edge[i] = ( Edge ) { u - 1, v - 1, w };
+    graph[i] = ( Edge ) { u - 1, v - 1, w };
   }
   
   /* Bellman-Ford Algorithm */
@@ -39,10 +39,10 @@ int main() {
   neg_cycle = false;
   
   for ( int i = 0; i < V - 1; i++ )
-    for ( int j = 0; j < E; j++ ) {
-      u = edge[j].u;
-      v = edge[j].v;
-      w = edge[j].w;
+    for ( int j = 0; j < edge_count; j++ ) {
+      u = graph[j].u;
+      v = graph[j].v;
+      w = graph[j].w;
       if ( d[u] + w < d[v] ) { /* relaxation */
         d[v] = d[u] + w;
         p[v] = u;
@@ -51,8 +51,8 @@ int main() {
   
   /* Checking for negative-weight cycles */
   
-  for ( int i = 0; i < E; i++ )
-    if ( d[ edge[i].u ] + edge[i].w < d[ edge[i].v ] ) {
+  for ( int i = 0; i < edge_count; i++ )
+    if ( d[ graph[i].u ] + graph[i].w < d[ graph[i].v ] ) {
       neg_cycle = true;
       break;
     }

@@ -21,9 +21,9 @@ using namespace std;
 struct Edge {
   int u, v, w;
   bool operator < ( const Edge& b ) const { return w < b.w; }
-} edge[MAXE], MST[MAXV];
+} graph[MAXE], MST[MAXV];
 
-int V, E, cost;
+int V, edge_count, cost;
 int u, v, w;
 
 int parent[MAXV];
@@ -47,23 +47,23 @@ int main() {
   
   memset( parent, -1, sizeof( parent ) );
   
-  scanf( "%d %d", &V, &E );
-  for ( int i = 0; i < E; i++ ) {
+  scanf( "%d %d", &V, &edge_count );
+  for ( int i = 0; i < edge_count; i++ ) {
     scanf( "%d %d %d", &u, &v, &w );
     u--; v--;
-    edge[i] = ( Edge ) { u, v, w };
+    graph[i] = ( Edge ) { u, v, w };
   }
   
   /* Kruskal's Algorithm */
   
-  sort( edge, edge + E );
+  sort( graph, graph + edge_count );
   
   cost = u = 0;
-  for ( int i = 0; i < E; i++ )
-    if ( find( edge[i].u ) != find( edge[i].v ) ) {
-      cost += edge[i].w;
-      MST[ u++ ] = edge[i];
-      join( edge[i].u, edge[i].v );
+  for ( int i = 0; i < edge_count; i++ )
+    if ( find( graph[i].u ) != find( graph[i].v ) ) {
+      cost += graph[i].w;
+      MST[ u++ ] = graph[i];
+      join( graph[i].u, graph[i].v );
     }
   
   printf( "MST's cost: %d\n", cost );
