@@ -3,7 +3,8 @@
 // Author      : Jos Ral Prez Rodrguez
 // Version     :
 // Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Description : Codeforces problem https://codeforces.com/contest/1117/problem/D,
+//               using recurrence f(n) = f(n-m) + f(n-1)
 //============================================================================
 #include <bits/stdc++.h>
 
@@ -32,6 +33,7 @@ int mpow(i64 pow) {
 	if(pow % 2) multiply(pi + 1, 1, pi + 2);
 	return pi + 1 + (pow % 2);
 }
+
 
 void solve() {
 	scanf("%lli %d", &n, &m);
